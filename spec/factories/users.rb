@@ -10,8 +10,7 @@ FactoryBot.define do
     nickname              {Faker::Name.initials(number: 2)}
     birth_date            {Faker::Date.backward}
     email                 {Faker::Internet.free_email}
-    password = "aaa111"
-    password               {password}
-    password_confirmation  {password}
+    password               {"aaa111"}
+    password_confirmation  {"aaa111"}
   end
 end
