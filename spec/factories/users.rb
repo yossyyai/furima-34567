@@ -11,6 +11,6 @@ FactoryBot.define do
     birth_date            {Faker::Date.backward}
     email                 {Faker::Internet.free_email}
     password               {"aaa111"}
-    password_confirmation  {"aaa111"}
+    password_confirmation  {password}
   end
 end
