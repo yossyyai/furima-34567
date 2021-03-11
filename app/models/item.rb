@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
+  belongs_to :user, optional: true
+
   belongs_to :category
   belongs_to :status
   belongs_to :charges
@@ -22,5 +24,7 @@ class Item < ApplicationRecord
     validates :prefectures_id
     validates :ship_date_id
   end
+
+  validates :price, inclusion: { in: (300..9999999)}, format: { with: /\A[0-9]+\z/ }
 
 end
