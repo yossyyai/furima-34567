@@ -16,8 +16,8 @@ class Item < ApplicationRecord
     validates :description
     validates :price
   end
- 
-  with_options numericality: { other_than: 1 }  do
+
+  with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
     validates :charges_id
@@ -25,6 +25,5 @@ class Item < ApplicationRecord
     validates :ship_date_id
   end
 
-  validates :price, inclusion: { in: (300..9999999)}, format: { with: /\A[0-9]+\z/ }
-
+  validates :price, inclusion: { in: (300..9_999_999) }, format: { with: /\A[0-9]+\z/ }
 end

@@ -10,7 +10,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
     end
-    
+
     context '商品出品ができない時' do
       it 'imageがないと保存できない' do
         @item.image = nil
@@ -30,45 +30,45 @@ RSpec.describe Item, type: :model do
       it 'category_idがないと保存できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it 'status_idがないと保存できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status must be other than 1")
+        expect(@item.errors.full_messages).to include('Status must be other than 1')
       end
       it 'charges_idがないと保存できない' do
         @item.charges_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Charges must be other than 1")
+        expect(@item.errors.full_messages).to include('Charges must be other than 1')
       end
       it 'prefectures_idがないと保存できない' do
         @item.prefectures_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefectures must be other than 1")
+        expect(@item.errors.full_messages).to include('Prefectures must be other than 1')
       end
       it 'ship_date_idがないと保存できない' do
         @item.ship_date_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Ship date must be other than 1")
+        expect(@item.errors.full_messages).to include('Ship date must be other than 1')
       end
       it 'priceがないと保存できない' do
-        @item.price = '' 
+        @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
-      
+
       it '販売価格が300円未満では保存できない' do
         @item.price = 33
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it '販売価格が10000000円以上では保存できない' do
-        @item.price = 11111111
+        @item.price = 11_111_111
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
-      
+
       it 'priceが半角数字でないと出品できない' do
         @item.price = '３００'
         @item.valid?
@@ -85,5 +85,5 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
     end
-  end  
+  end
 end
