@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
+
   def index
     if Order.exists?(item_id: params[:item_id])
       redirect_to root_path
