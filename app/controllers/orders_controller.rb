@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
   def index
+    if Order.exists?(item_id: params[:item_id])
+      redirect_to root_path
+    end
     @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(user_id: current_user.id, item_id: params[:item_id])
   end
