@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :move_index, only: [:edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_edit, only: :edit
 
 
   def index
@@ -56,6 +57,12 @@ class ItemsController < ApplicationController
   def move_index
     unless current_user.id == Item.find(params[:id]).user_id
       redirect_to action: :index
+    end
+  end
+
+  def set_edit
+    if Order.exists?(item_id: params[:id])
+      redirect_to root_path
     end
   end
 end
